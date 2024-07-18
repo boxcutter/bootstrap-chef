@@ -34,7 +34,7 @@ variable "ssh_password" {
 
 variable "vm_name" {
   type    = string
-  default = "ubuntu-22.04-x86_64"
+  default = "chef-bootstrap-ubuntu2204"
 }
 
 source "file" "user_data" {
@@ -88,7 +88,7 @@ source "qemu" "ubuntu" {
   iso_checksum     = var.iso_checksum
   iso_url          = var.iso_url
   qemuargs = [
-    ["-cdrom", "boot-${var.vm_name}/cidata.iso"]
+    ["-cdrom", "boot-${var.vm_name}/cidata.iso"],
   ]
   output_directory  = "output-${var.vm_name}"
   shutdown_command  = "echo '${var.ssh_password}' | sudo -S shutdown -P now"
@@ -102,7 +102,6 @@ source "qemu" "ubuntu" {
   machine_type      = "q35"
   memory            = 4096
   cpus              = 2 
-  net_bridge        = "br0"
   net_device        = "virtio-net"
   disk_interface    = "virtio"
 }
