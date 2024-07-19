@@ -51,6 +51,10 @@ users:
     lock_passwd: false
 chpasswd: { expire: False }
 ssh_pwauth: True
+package_update: False
+package_upgrade: false
+packages:
+  - qemu-guest-agent
 EOF
   target  = "boot-${var.vm_name}/user-data"
 }
@@ -124,6 +128,7 @@ build {
     scripts = [
       "../scripts/disable-updates.sh",
       "../scripts/qemu.sh",
+      "../scripts/chef.sh",
       "../scripts/clear-machine-information.sh"
     ]
   }

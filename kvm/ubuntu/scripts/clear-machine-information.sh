@@ -8,8 +8,8 @@ echo "==> Reset machine ID"
 truncate -s 0 /etc/machine-id
 [ -f /var/lib/dbus/machine-id ] && truncate -s 0 /var/lib/dbus/machine-id
 
-echo "==> Remove SSH host keys (will be regenerated on first boot)"
-rm --force /etc/ssh/ssh_host_*
+# echo "==> Remove SSH host keys (will be regenerated on first boot)"
+# rm --force /etc/ssh/ssh_host_*
 
 echo "==> Remove the random seed file (will be regenerated on first boot)"
 systemctl --quiet is-active systemd-random-seed.service && systemctl stop systemd-random-seed.service

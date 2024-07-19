@@ -24,11 +24,11 @@ APT::Periodic::Unattended-Upgrade "0";
 EOF
 
 # Disable snapd updates
-echo "==> Disable snap updates"
-systemctl stop snapd.service;
-systemctl stop snapd.socket;
-systemctl mask snapd.service;
-systemctl mask snapd.socket;
+# echo "==> Disable snap updates"
+# systemctl stop snapd.service;
+# systemctl stop snapd.socket;
+# systemctl mask snapd.service;
+# systemctl mask snapd.socket;
 
 echo "==> Remove the unattended-upgrades and ubuntu-release-upgrader-core packages"
 apt-get -y purge unattended-upgrades ubuntu-release-upgrader-core;
